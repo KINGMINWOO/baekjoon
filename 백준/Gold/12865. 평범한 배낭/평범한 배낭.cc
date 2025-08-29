@@ -16,8 +16,6 @@ int main() {
         cin >> weight >> value;
         w.push_back(weight);
         v.push_back(value);
-        // if(weight <= K){ // 버틸 수 있는 무게보다 크면 필요 없음
-        // }
     }
     
     vector<int> maxValueWhenK(K + 1, 0); // 버틸 수 있는 무게가 K일 때의 최대 가치합
@@ -25,7 +23,7 @@ int main() {
     for (int i = 0; i < N; i++){
         for (int j = K; j >= 0; j--){
             if(j - w[i] >= 0)
-                maxValueWhenK[j] = max(maxValueWhenK[j], maxValueWhenK[j - w[i]] + v[i]);
+                maxValueWhenK[j] = max(maxValueWhenK[j], maxValueWhenK[j - w[i]] + v[i]); // 최대 가치합 갱신
         }
     }
 
