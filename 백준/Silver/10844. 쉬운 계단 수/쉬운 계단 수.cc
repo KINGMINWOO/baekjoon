@@ -8,29 +8,24 @@ int main() {
     int N;
     cin >> N;
 
-    long long array[101][10] = { 0 };
+    long long array[101][10] = { 0 }; // 
+
+    for (int i = 0; i <= 9; i++) {
+        if (i == 0) 
+            array[1][i] = 0;
+        else
+            array[1][i] = 1;
+    }
     
-    for (int i = 1; i < 101; i++) {
+    for (int i = 2; i < 101; i++) {
         for (int j = 0; j <= 9; j++) {
-            if (i == 1) {
-                if (j == 0) {
-                    array[i][j] = 0;
-                }
-                else {
-                    array[i][j] = 1;
-                }
-            }
-            else {
-                if (j == 0) {
-                    array[i][j] = array[i - 1][j + 1];
-                }
-                else if (j == 9) {
-                    array[i][j] = array[i - 1][j - 1];
-                }
-                else {
-                    array[i][j] = array[i - 1][j - 1] + array[i - 1][j + 1];
-                }
-            }
+            if (j == 0)
+                array[i][j] = array[i - 1][j + 1];
+            else if (j == 9)
+                array[i][j] = array[i - 1][j - 1];
+            else 
+                array[i][j] = array[i - 1][j - 1] + array[i - 1][j + 1];
+          
             array[i][j] %= 1000000000;
         }
     }
